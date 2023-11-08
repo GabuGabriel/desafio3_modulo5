@@ -1,26 +1,17 @@
-import React, { createContext, useContext, useState } from "react";
-import data from "../../../public/fotos.json"
+import { createContext, useContext, useState } from 'react';
 
-const ImagenesContext = createContext();
+const ImagenesContext = createContext()
 
 export function ImagenesProvider({ children }) {
-  const [imagenes, setImagenes] = useState(data.photos);
-
-  const toggleLike = (id) => {
-    setImagenes((prevImagenes) =>
-      prevImagenes.map((imagen) =>
-        imagen.id === id ? { ...imagen, liked: !imagen.liked } : imagen
-      )
-    );
-  };
+  const toggleLike = (id) => { }
 
   return (
-    <ImagenesContext.Provider value={{ imagenes, toggleLike }}>
+    <ImagenesContext.Provider value={{ toggleLike }}>
       {children}
     </ImagenesContext.Provider>
-  );
+  )
 }
 
 export function useImagenes() {
-  return useContext(ImagenesContext);
+  return useContext(ImagenesContext)
 }
