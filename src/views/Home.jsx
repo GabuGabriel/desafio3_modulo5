@@ -1,12 +1,15 @@
 import '../App.css'
+import pokemon6 from '../assets/images/pokemon-6.svg'
+import pokemon23 from '../assets/images/pokemon-23.svg'
 
-export default function Home() {
-
-    return (
-        <div className="containerhome">
-            <h1>Natural Pic</h1>
-            <div key={ } class="container overflow-hidden text-center">
-            </div>
-        </div>
-    );
+export default function Home () {
+  return (
+    <div className='containerHome'>
+      <h1>Vienbenido al buscador de Pokemones</h1>
+      <div className='containerimageneshome'>
+        <img src={pokemon23} alt='foto1' width={280} height={280} />
+        <img src={pokemon6} alt='foto1' width={280} height={280} />
+      </div>
+    </div>
+  )
 }
