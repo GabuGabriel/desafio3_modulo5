@@ -6,16 +6,16 @@ import Pokemones from './views/Pokemones'
 import Pagina404 from './views/404'
 import { Provider } from './Contexto/PokeContexto'
 
-function App() {
+function App () {
   return (
     <BrowserRouter>
       <Provider>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Pokemones" element={<Pokemones />} />
-          <Route path="/Detalle/:pokemonName" element={<Detalle />} />
-          <Route path="*" element={<Pagina404 />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/Pokemones' element={<Pokemones />} />
+          <Route path='/Pokemones/:pokemonName' element={<Detalle />} />
+          <Route path='*' element={<Pagina404 />} />
         </Routes>
       </Provider>
     </BrowserRouter>

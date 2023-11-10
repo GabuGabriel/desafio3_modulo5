@@ -1,22 +1,65 @@
-import React, { createContext, useState, useCallback } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const PokeContexto = createContext()
 
 export const Provider = ({ children }) => {
-  const [selectedPokemon, setSelectedPokemon] = useState(null)
+  const [options, setOptions] = useState({})
+  const [pokemonName, setPokemonName] = useState('')
+  const [pokemon, setPokemon] = useState({})
+  const [pokemonStats, setPokemonStats] = useState([])
   const navigate = useNavigate()
+  const url = 'https://pokeapi.co/api/v2/pokemon/'
 
-  const setPokemon = useCallback((pokemon) => {
-    setSelectedPokemon(pokemon)
+  const getPokemones = async () => {
+    const resp = await fetch(url)
+    const data = await resp.json()
+    const opts = data.results.map((d) => d.name)
+    setOptions(opts)
+  }
+
+  const getPokemon = async (pokeName) => {
+    const resp = await fetch(`${url}${pokeName}`)
+    const data = await resp.json()
+    const img = data.sprites.other.dream_world.front_default
+    const stats = data.stats.map((stat) => ({
+      name: stat.stat.name,
+      value: stat.base_stat
+    }))
+    const types = data.types.map(({ type }) => type.name).join(' - ')
+    setPokemon({ img, types })
+    setPokemonStats((state) => {
+      state = [...state, stats]
+      return state
+    })
+  }
+
+  const verPokemon = async () => {
+    getPokemon(pokemonName)
+    pokemonName
+      ? navigate(`/Pokemones/${pokemonName}`)
+      : alert(
+        'No se ha seleccionado ningún Pokémon o no se encontraron detalles.'
+      )
+  }
+
+  useEffect(() => {
+    return () => {
+      getPokemones()
+    }
   }, [])
 
   const globalState = {
-    selectedPokemon,
+    options,
+    setOptions,
+    pokemonName,
+    setPokemonName,
+    verPokemon,
+    pokemon,
     setPokemon,
-    navigate,
-    apiUrl: 'https://pokeapi.co/api/v2/pokemon/'
+    pokemonStats
   }
-
-  return <PokeContexto.Provider value={globalState}>{children}</PokeContexto.Provider>
+  return (
+    <PokeContexto.Provider value={globalState}>{children}</PokeContexto.Provider>
+  )
 }

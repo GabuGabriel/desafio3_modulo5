@@ -1,36 +1,36 @@
-import React, { useContext, useState } from 'react';
-import { PokeContexto } from '../Contexto/PokeContexto';
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react'
+import { PokeContexto } from '../Contexto/PokeContexto'
 
-export default function Pokemones() {
-  const { setPokemon } = useContext(PokeContexto);
-  const navigate = useNavigate();
-  const [localPokemonName, setLocalPokemonName] = useState('');
-
-  const handleInputChange = (event) => {
-    setLocalPokemonName(event.target.value);
-  };
-
-  const handleVerPokemonClick = () => {
-    const finalPokemonName = localPokemonName || '';
-    setPokemon(finalPokemonName);
-    navigate(`/Detalle/${finalPokemonName}`);
-  };
+export default function Pokemones () {
+  const { options, setPokemonName, verPokemon } = useContext(PokeContexto)
 
   return (
-    <div className="containerpokemones">
+    <div className='containerpokemones'>
       <h1>Buscador de Pokemones</h1>
-      <div className="divformulario">
+      <div className='divformulario'>
         <form>
           <label>
             <h3>Selecciona un Pokemon</h3>
-            <input type="text" value={localPokemonName} onChange={handleInputChange} />
+            <select
+              name=''
+              id=''
+              onChange={(e) => setPokemonName(e.target.value)}
+            >
+              <option value='Selecciona un Pokemon' />
+              {options.map((op, index) => {
+                return (
+                  <option key={index} value={op}>
+                    {op}
+                  </option>
+                )
+              })}
+            </select>
           </label>
-          <button type="button" onClick={handleVerPokemonClick}>
+          <button type='button' onClick={verPokemon}>
             Ver Pokémon
           </button>
         </form>
       </div>
     </div>
-  );
+  )
 }
