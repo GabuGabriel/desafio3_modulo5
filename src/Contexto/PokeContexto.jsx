@@ -1,17 +1,22 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useState, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const ImagenesContext = createContext()
+export const PokeContexto = createContext()
 
-export function ImagenesProvider({ children }) {
-  const toggleLike = (id) => { }
+export const Provider = ({ children }) => {
+  const [selectedPokemon, setSelectedPokemon] = useState(null)
+  const navigate = useNavigate()
 
-  return (
-    <ImagenesContext.Provider value={{ toggleLike }}>
-      {children}
-    </ImagenesContext.Provider>
-  )
-}
+  const setPokemon = useCallback((pokemon) => {
+    setSelectedPokemon(pokemon)
+  }, [])
 
-export function useImagenes() {
-  return useContext(ImagenesContext)
+  const globalState = {
+    selectedPokemon,
+    setPokemon,
+    navigate,
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon/'
+  }
+
+  return <PokeContexto.Provider value={globalState}>{children}</PokeContexto.Provider>
 }
