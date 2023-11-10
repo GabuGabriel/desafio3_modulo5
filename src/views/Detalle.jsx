@@ -1,18 +1,16 @@
 import { useContext } from 'react'
 import { PokeContexto } from '../Contexto/PokeContexto'
-import { useParams } from 'react-router-dom'
 
 export default function Detalle () {
-  const { pokemon, pokemonStats } = useContext(PokeContexto)
-  const { pokeName } = useParams()
+  const { pokemon, pokemonStats, pokemonName } = useContext(PokeContexto)
 
   return (
     <div className='containerdetalle'>
-      <h1> {pokeName} </h1>
+      <h1 style={{ textTransform: 'capitalize' }}> {pokemonName} </h1>
       <div className='containerdetallepokemon'>
-        <img src={pokemon.img} height={300} alt={`Imagen de ${pokeName}`} />
+        <img src={pokemon.img} height={350} alt={`Imagen de ${pokemonName}`} />
         <div className='divlista'>
-          <ul>
+          <ul style={{ textTransform: 'capitalize' }}>
             {pokemonStats[0]?.map((x, i) => {
               return (
                 <li key={i}>

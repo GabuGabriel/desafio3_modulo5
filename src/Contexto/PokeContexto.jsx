@@ -21,7 +21,7 @@ export const Provider = ({ children }) => {
   const getPokemon = async (pokeName) => {
     const resp = await fetch(`${url}${pokeName}`)
     const data = await resp.json()
-    const img = data.sprites.other.dream_world.front_default
+    const img = data.sprites.front_default
     const stats = data.stats.map((stat) => ({
       name: stat.stat.name,
       value: stat.base_stat
@@ -35,12 +35,12 @@ export const Provider = ({ children }) => {
   }
 
   const verPokemon = async () => {
-    getPokemon(pokemonName)
-    pokemonName
-      ? navigate(`/Pokemones/${pokemonName}`)
-      : alert(
-        'No se ha seleccionado ningún Pokémon o no se encontraron detalles.'
-      )
+    if (pokemonName) {
+      await getPokemon(pokemonName)
+      navigate(`/Pokemones/${pokemonName}`)
+    } else {
+      alert('No se ha seleccionado ningún Pokémon o no se encontraron detalles.')
+    }
   }
 
   useEffect(() => {

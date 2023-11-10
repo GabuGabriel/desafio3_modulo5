@@ -1,13 +1,19 @@
 /* estilosbase */
 * {
-  color: whitesmoke;
+  color: black;
   margin: 0;
 }
 
 h1 {
   font-size: 3em;
+  color: rgb(196, 1, 1);
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 55px;
+  border: solid 8px #222224;
+  box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.774)
 }
 
 h2 {
@@ -21,19 +27,21 @@ h3 {
   width: 600px;
   text-align: center;
   padding-top: 15px;
-  color: rgb(167, 24, 24);
+  color: #f00000;
   font-size: 3em;
-  background-color: rgba(231, 222, 222, 0.89);
-  border-radius: 15px;
-  border: solid 2px blue;
-  box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.753);
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 55px;
+  border: solid 8px #222224;
+  box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.774);
 }
 
-.active {
-  color: rgba(0, 0, 0, 0.658)
-}
+
 
 /* estilosnavbar */
+.active {
+  color: rgba(245, 222, 23, 0.995)
+}
+
 .navcss {
   max-width: 100%;
   height: 4.5em;
@@ -41,16 +49,12 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px 0 20px;
-  background-image: url('./assets/images/fondo.png');
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-bottom: solid 1px whitesmoke;
-  background-position: center;
+  background: #dc3545;
+  border-bottom: solid 2px black;
 }
 
 .pokepin {
-  width: 50px;
+  width: 60px;
 }
 
 .divlinks {
@@ -63,10 +67,10 @@ h3 {
 /* estilosvistahome */
 .containerHome {
   max-width: 100%;
-  height: 90vh;
-  container: inherit;
+  height: 92vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1em;
   background-image: url('./assets/images/fondo.png');
   background-repeat: no-repeat;
@@ -84,7 +88,7 @@ h3 {
 /* estilosbuscador */
 .containerpokemones {
   max-width: 100%;
-  height: 90vh;
+  height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,6 +97,13 @@ h3 {
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+}
+
+.divformulario {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 label {
@@ -104,13 +115,19 @@ label {
 
 }
 
-select{
-  height: 20px;
+select {
+  height: 30px;
   width: 200px;
-  box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.336);
+  font-size: 1em;
+  text-align: center;
+  color: black !important;
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 55px;
+  border: solid 2px #222224;
+  box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.774);
 }
 
-option{
+option {
   color: black;
 }
 
@@ -127,7 +144,7 @@ form {
 /* estilosdetalle */
 .containerdetalle {
   max-width: 100%;
-  height: 90vh;
+  height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,18 +157,18 @@ form {
 }
 
 .containerdetallepokemon {
-  height: 500px;
+  height: 350px;
   width: 600px;
-  border-radius: 15px;
-  border: solid 5px black;
+  border-radius: 25px;
+  border: solid 8px black;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(252, 82, 82);
+  background-color: rgba(255, 255, 255, 0.685);
   box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.336);
 }
 
-li{
+li {
   font-size: 20px;
   padding-bottom: 6px;
   color: black;
@@ -161,7 +178,7 @@ li{
 /* estilos404 */
 .style404 {
   max-width: 100%;
-  height: 90vh;
+  height: 92vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
